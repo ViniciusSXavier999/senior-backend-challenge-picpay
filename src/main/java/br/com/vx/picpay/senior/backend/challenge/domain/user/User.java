@@ -1,19 +1,20 @@
 package br.com.vx.picpay.senior.backend.challenge.domain.user;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.math.BigDecimal;
+
+import br.com.vx.picpay.senior.backend.challenge.dtos.UserDTO;
+import lombok.*;
 
 @Entity(name = "users")
 @Table(name = "users")
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+@EqualsAndHashCode(of="id")
 public class User {
 
     @Id
@@ -41,7 +42,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
-
-
+    public User(UserDTO data){
+        this.firstName = data.firstName();
+        this.lastName = data.lastName();
+        this.document = data.document();
+        this.balance = data.balance();
+        this.userType = data.userType();
+        this.password = data.password();
+        this.email = data.email();
+    }
 
 }

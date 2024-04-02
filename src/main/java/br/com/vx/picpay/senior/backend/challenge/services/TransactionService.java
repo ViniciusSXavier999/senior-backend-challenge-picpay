@@ -58,8 +58,8 @@ public class TransactionService {
 
         // PERSISTINDO ESSES DADOS NO NOSSO BANCO DE DADOS
         this.transactionRepository.save(newTransaction);
-        this.userService.createUser(senderr);
-        this.userService.createUser(receiverr);
+        this.userService.saveUser(senderr);
+        this.userService.saveUser(receiverr);
 
 
 
